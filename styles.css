@@ -179,3 +179,9 @@ footer p {
     font-size: 0.9em;
     margin: 0;
 }
+
+#sp-instructions {
+    float: right;
+    width: 300px;
+    height: 300px;
+}
