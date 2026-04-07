@@ -158,7 +158,7 @@
                     </div>
                 </div>
             </div>
-            <a href="https://leesarcade.com" class="navbar3_logo-link w-nav-brand">
+            <a href="index.html" class="navbar3_logo-link w-nav-brand">
                 <img src=""loading="lazy" sizes="(max-width: 479px) 160px, 240px" srcset="" alt="" class="navbar3_logo">
             </a>
             
@@ -166,10 +166,9 @@
                 <a href="#" class="navbar3_logo-link-menu w-nav-brand">
                     <img src="" loading="eager" sizes="100vw" alt="" class="navbar3_logo">
                 </a>
-                <a href="/games.html" class="navbar3_link text-color-white w-nav-link">Games</a>
-                <a href="/about" class="navbar3_link text-color-white w-nav-link" tabindex="0">About</a>
+                <a href="index.html" class="navbar3_link text-color-white w-nav-link">Home</a>
+                <a href="about.html" class="navbar3_link text-color-white w-nav-link" tabindex="0">About</a>
                 <!-- <a href="DISCORD?" target="_blank" class="navbar3_dropdown-link w-dropdown-link" tabindex="0">Community</a> -->
-                <a href="/contact" class="navbar3_link text-color-white w-nav-link" tabindex="0">Contact</a>
             </nav>
             <div class="navbar3_menu-background" style="opacity: 0;">
             </div>
@@ -191,11 +190,64 @@
                                 <li>Press the spacebar to fire.</li>
                             </ol>
                         </div>
+                        <div class="donation-callout">
+                            <p>If you enjoy playing this game, a donation would be appreciated and helps fund more arcade projects.</p>
+                            <p><a class="bitcoin-link" href="bitcoin:bc1q5ghgl64fxgdn5zm9g20q3gyrsc4myje3sdyhxf">Donate with Bitcoin 💸</a></p>
+                            <p class="wallet-address"><span class="wallet-address-text">bc1q5ghgl64fxgdn5zm9g20q3gyrsc4myje3sdyhxf</span><button type="button" class="bitcoin-copy-link" onclick="copyBitcoinAddress()">Copy</button></p>
+                            <p id="copy-toast" class="copy-toast" aria-live="polite"></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
     </main>
+
+    <script>
+        let copyToastTimer;
+
+        function showCopyToast(message) {
+            const toast = document.getElementById("copy-toast");
+            if (!toast) {
+                return;
+            }
+
+            toast.textContent = message;
+            toast.classList.add("is-visible");
+
+            clearTimeout(copyToastTimer);
+            copyToastTimer = setTimeout(function () {
+                toast.classList.remove("is-visible");
+            }, 1500);
+        }
+
+        function fallbackCopyText(text) {
+            const temp = document.createElement("textarea");
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand("copy");
+            document.body.removeChild(temp);
+        }
+
+        function copyBitcoinAddress() {
+            const address = "bc1q5ghgl64fxgdn5zm9g20q3gyrsc4myje3sdyhxf";
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(address)
+                    .then(function () {
+                        showCopyToast("Address copied.");
+                    })
+                    .catch(function () {
+                        fallbackCopyText(address);
+                        showCopyToast("Address copied.");
+                    });
+                return;
+            }
+
+            fallbackCopyText(address);
+            showCopyToast("Address copied.");
+        }
+    </script>
 
 
     </body>

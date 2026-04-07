@@ -2810,6 +2810,100 @@ html {
     padding-top: 50px;
     box-sizing: border-box;
   }
+
+  .game-list {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .donation-callout {
+    max-width: 720px;
+    margin: 3rem auto 0;
+    padding: 1.25rem;
+    border: 1px solid var(--pew-pew-purple);
+    border-radius: .5rem;
+    text-align: center;
+    background-color: #101010;
+    position: relative;
+    z-index: 5;
+    pointer-events: auto;
+  }
+
+  .donation-callout p {
+    margin-bottom: .75rem;
+  }
+
+  .donation-callout p:last-child {
+    margin-bottom: 0;
+  }
+
+  .donation-callout .bitcoin-link {
+    color: var(--pew-pew-purple);
+    text-decoration: underline;
+    transition: color .2s ease;
+  }
+
+  .donation-callout .bitcoin-link:hover,
+  .donation-callout .bitcoin-link:focus-visible {
+    color: var(--white) !important;
+  }
+
+  .wallet-address {
+    font-size: 1.05rem;
+    word-break: break-all;
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  .wallet-address-text {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  .donation-callout .bitcoin-copy-link {
+    color: var(--black);
+    background-color: var(--white);
+    border: 1px solid var(--white);
+    border-radius: .3rem;
+    text-decoration: none;
+    display: inline-block;
+    padding: .15rem .5rem;
+    margin-left: .5rem;
+    font-family: inherit;
+    font-size: .95rem;
+    line-height: 1.2;
+    cursor: pointer;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 6;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+  }
+
+  .donation-callout .bitcoin-copy-link:hover,
+  .donation-callout .bitcoin-copy-link:focus-visible {
+    color: var(--white) !important;
+    background-color: var(--pew-pew-purple);
+    border-color: var(--pew-pew-purple);
+  }
+
+  .copy-toast {
+    color: var(--pew-pew-purple);
+    font-size: .95rem;
+    min-height: 1.2rem;
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity .2s ease, transform .2s ease;
+  }
+
+  .copy-toast.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
   
   body {
     background-color: var(--black);
@@ -6342,6 +6436,7 @@ html {
     background-image: linear-gradient(0deg, #f3939366, var(--clear));
     width: 100vw;
     height: 25svh;
+    pointer-events: none;
     position: fixed;
     inset: auto 0% -2%;
   }

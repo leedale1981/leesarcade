@@ -1,30 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Lee's Arcade</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Lee's Arcade</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="game1.html">Space Blaster</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="about">
-            <h2>About Lee's Arcade</h2>
-            <p>Welcome to Lee's Arcade, a space where creativity meets gameplay! Here, you can explore unique video games developed with passion and innovation. Stay tuned for more games and updates!</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Lee's Arcade</p>
-    </footer>
-</body>
+<html data-wf-domain="www.indiearcadewave.com" data-wf-page="" data-wf-site="">
+    <head>
+        <meta charset="utf-8"/>
+        <title>About - Lee's Arcade</title>
+        <meta content="Learn more about Lee's Arcade and the indie games in development." name="description"/>
+        <meta content="About - Lee's Arcade" property="og:title"/>
+        <meta property="og:type" content="website"/>
+        <meta content="summary_large_image" name="twitter:card"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="div-block-31"></div>
+        <div class="page-wrapper">
+            <div data-animation="over-left" class="navbar3_component background-color-black w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="695a5025-585e-f538-adac-469e60c9de29" role="banner" data-no-scroll="1" data-duration="400">
+                <div class="navbar3_container">
+                    <div class="navbar3_menu-button w-nav-button" style="-webkit-user-select: text;" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false">
+                        <div class="menu-icon3">
+                            <div class="menu-icon3_line-top"></div>
+                            <div class="menu-icon3_line-middle"></div>
+                            <div class="menu-icon3_line-bottom"></div>
+                        </div>
+                    </div>
+                    <a href="index.html" class="navbar3_logo-link w-nav-brand">
+                        <img src="" loading="lazy" sizes="(max-width: 479px) 160px, 240px" srcset="" alt="" class="navbar3_logo">
+                    </a>
+
+                    <nav role="navigation" class="navbar3_menu w-nav-menu">
+                        <a href="#" class="navbar3_logo-link-menu w-nav-brand">
+                            <img src="" loading="eager" sizes="100vw" alt="" class="navbar3_logo">
+                        </a>
+                        <a href="index.html" class="navbar3_link text-color-white w-nav-link">Home</a>
+                        <a href="about.html" class="navbar3_link text-color-white w-nav-link" tabindex="0">About</a>
+                    </nav>
+                    <div class="navbar3_menu-background" style="opacity: 0;"></div>
+                </div>
+                <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>
+            </div>
+
+            <main class="main-wrapper">
+                <header class="section_homepage-hero">
+                    <div class="padding-global-3">
+                        <div class="container-large">
+                            <div class="homepage-hero_wrapper">
+                                <div class="homepage-hero_flex">
+                                    <div class="homepage-hero-content_wrapper">
+                                        <div class="max-width-large">
+                                            <div class="margin-bottom margin-small">
+                                                <h1>About Lee's Arcade</h1>
+                                            </div>
+                                            <div class="max-width-medium">
+                                                <p class="text-size-medium">Lee's Arcade is focused on making fun, replayable indie games and sharing the code behind them. New projects and updates are added over time as experiments become full game releases.</p>
+                                            </div>
+                                            <div class="donation-callout">
+                                                <p>If you like playing the games here, a donation would be appreciated and helps support future development.</p>
+                                                <p><a class="bitcoin-link" href="bitcoin:bc1q5ghgl64fxgdn5zm9g20q3gyrsc4myje3sdyhxf">Donate with Bitcoin 💸</a></p>
+                                                <p class="wallet-address"><span class="wallet-address-text">bc1q5ghgl64fxgdn5zm9g20q3gyrsc4myje3sdyhxf</span><button type="button" class="bitcoin-copy-link" onclick="copyBitcoinAddress()">Copy</button></p>
+                                                <p id="copy-toast" class="copy-toast" aria-live="polite"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </main>
+        </div>
+        <script>
+            let copyToastTimer;
+
+            function showCopyToast(message) {
+                const toast = document.getElementById("copy-toast");
+                if (!toast) {
+                    return;
+                }
+
+                toast.textContent = message;
+                toast.classList.add("is-visible");
+
+                clearTimeout(copyToastTimer);
+                copyToastTimer = setTimeout(function () {
+                    toast.classList.remove("is-visible");
+                }, 1500);
+            }
+
+            function fallbackCopyText(text) {
+                const temp = document.createElement("textarea");
+                temp.value = text;
+                document.body.appendChild(temp);
+                temp.select();
+                document.execCommand("copy");
+                document.body.removeChild(temp);
+            }
+
+            function copyBitcoinAddress() {
+                const address = "bc1q5ghgl64fxgdn5zm9g20q3gyrsc4myje3sdyhxf";
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(address)
+                        .then(function () {
+                            showCopyToast("Address copied.");
+                        })
+                        .catch(function () {
+                            fallbackCopyText(address);
+                            showCopyToast("Address copied.");
+                        });
+                    return;
+                }
+
+                fallbackCopyText(address);
+                showCopyToast("Address copied.");
+            }
+        </script>
+    </body>
 </html>
